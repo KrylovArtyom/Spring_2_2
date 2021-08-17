@@ -15,20 +15,17 @@ public class Car {
 	@Column(nullable = false)
 	private int series;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(orphanRemoval = true)
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@OneToOne(orphanRemoval = true)
-	@JoinColumn(name = "users_id")
-	private User users;
-
-	public User getUsers() {
-		return users;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUsers(User users) {
-		this.users = users;
+	public User setUser(User user) {
+		this.user = user;
+		return user;
 	}
 
 	public Car() {
@@ -63,5 +60,36 @@ public class Car {
 
 	public void setSeries(int series) {
 		this.series = series;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = 37;
+		result = 37 * result + (int)(id ^ (id >>> 32));
+		result = 37 * result + model.hashCode();
+		result = 37 * result + series;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if ((obj == null) || (getClass() != obj.getClass())) {
+			return false;
+		}
+		Car other = (Car) obj;
+		return (id.equals(other.id) &&
+				model.equals(other.model) &&
+				(series == other.series));
+	}
+
+	@Override
+	public String toString() {
+		return "Car [" +
+				"model = " + model + '\'' +
+				", series = " + series +
+				']';
 	}
 }

@@ -19,7 +19,7 @@ public class User {
    @Column(nullable = false)
    private String email;
 
-   @OneToOne(cascade = CascadeType.ALL, mappedBy = "users")
+   @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
    private Car car;
 
 
@@ -68,8 +68,9 @@ public class User {
       return car;
    }
 
-   public void setCar(Car car) {
+   public Car setCar(Car car) {
       this.car = car;
+      return car;
    }
 
 
