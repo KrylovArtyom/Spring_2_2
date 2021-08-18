@@ -37,6 +37,9 @@ public class MainApp {
          System.out.println("     " + user.getCar().toString());
       }
 
+      System.out.println("Владелец машины " + car3 + "\n" +
+                         "==============> " + userService.getOwner(car3).toString());
+
       context.close();
    }
 }
