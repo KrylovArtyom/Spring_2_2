@@ -37,8 +37,10 @@ public class MainApp {
          System.out.println("     " + user.getCar().toString());
       }
 
-      System.out.println("Владелец машины " + car3 + "\n" +
-                         "==============> " + userService.getOwner(car3).toString());
+      Car car5 = car3;
+
+      System.out.println("Владелец машины " + car5 + "\n" +
+                         "==============> " + userService.getOwner(car5).toString());
 
       context.close();
    }
