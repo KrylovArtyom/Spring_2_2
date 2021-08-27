@@ -15,8 +15,8 @@ public class Car {
 	@Column(nullable = false)
 	private int series;
 
-	@OneToOne(orphanRemoval = true)
-	@JoinColumn(name = "user_id")
+	@OneToOne //(orphanRemoval = true)
+	@JoinColumn (name = "user_id")
 	private User user;
 
 	public User getUser() {

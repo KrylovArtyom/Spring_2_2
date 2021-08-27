@@ -13,8 +13,8 @@ public class CarsController {
 	@Autowired
 	private CarService carService;
 
-	@GetMapping("/cars")
-	public String printCars(@RequestParam(value = "count", required = false, defaultValue = "0") int count, Model model) {
+	@GetMapping ("/cars")
+	public String printCars(@RequestParam (value = "count", required = false, defaultValue = "0") int count, Model model) {
 
 		model.addAttribute("carList", carService.getCars(count));
 
